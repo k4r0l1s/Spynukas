@@ -79,6 +79,9 @@ $mobile-landscape: "only screen and (orientation: landscape)";
 
   @media #{$mobile-landscape} {
     width: 150px;
+      h1{
+        font-size: 34px;
+      }
   }
 }
 

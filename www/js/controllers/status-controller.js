@@ -5,7 +5,7 @@
     .module('starter')
     .controller('StatusController', StatusController);
 
-  function StatusController($scope, $log, statusesService, notifier) {
+  function StatusController($scope, $log, statusesService, notifier, localStorage) {
     var vm = this;
     vm.initialized = false;
     vm.refresh = refresh;
@@ -19,6 +19,7 @@
     function responseHandler(response) {
       if (response != null) {
         vm.lockStatus = response[0].locked;
+        vm.lastLocked = response[0].time;
       } else {
         vm.warning = true;
         notifier.warning();
@@ -27,19 +28,19 @@
       $scope.$broadcast('scroll.refreshComplete');
     }
 
-    function refresh(){
+    function refresh() {
       getData();
     }
 
-    var beforeEnter = $scope.$on('$ionicView.beforeEnter', function(){
+    var beforeEnter = $scope.$on('$ionicView.beforeEnter', function () {
       getData();
+      var settings = JSON.parse(localStorage.get('settings'));
+      vm.timeDisplayed = settings.timeDisplayed;
     });
 
-    $scope.$on('$destroy', function() {
+    $scope.$on('$destroy', function () {
       beforeEnter();
     });
-
-
 
   }
 
