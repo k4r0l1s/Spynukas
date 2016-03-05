@@ -21,3 +21,54 @@ $ionicons-font-path: "../lib/ionic/fonts" !default;
 // Include all of Ionic
 @import "www/lib/ionic/scss/ionic";
 
+// Custom variables
+$mobile-landscape: "only screen and (orientation: landscape)";
+
+// Ionic styles override
+.tabs-top > .tabs,
+.tabs.tabs-top {
+  top: 5px;
+}
+
+.has-tabs-top {
+  top: 53px;
+}
+
+// Custom styles
+.status-wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.lock-status {
+  width: 300px;
+  text-align: center;
+
+  @media #{$mobile-landscape} {
+    width: 150px;
+  }
+}
+
+.status-icon {
+  font-size: 200px;
+  display: block;
+  color: $light;
+  padding: 50px;
+  border-radius: 300px;
+
+  @media #{$mobile-landscape} {
+    font-size: 100px;
+    padding: 25px;
+    border-radius: 150px;
+  }
+}
+
+.locked {
+  background-color: $balanced;
+}
+
+.unlocked {
+  background-color: $assertive;
+}
