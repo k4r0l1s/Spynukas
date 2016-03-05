@@ -1,10 +1,18 @@
 <ion-view view-title="Chats">
   <ion-content>
-    <ion-list>
-      <ion-item class="item item-icon-left" ng-repeat="status in vm.statuses" type="item-text-wrap">
-        <i class="icon" ng-class="status.message == 'Locked' ? 'ion-android-checkbox-outline' : 'ion-android-checkbox-outline-blank'"></i>
-        <h2>{{status.time}} - {{status.message}}</h2>
-      </ion-item>
-    </ion-list>
+    <ion-refresher pulling-text="Pull to refresh" on-refresh="vm.refresh()"></ion-refresher>
+    <div class="status-wrapper" ng-if="vm.warning">
+      <div ng-include="'templates/no-data.html'"></div>
+    </div>
+    <div ng-if="!vm.warning">
+      <ion-list>
+        <ion-item class="item item-icon-left" ng-repeat="status in vm.statuses track by $index" type="item-text-wrap">
+          <i class="icon"
+             ng-class="status.locked ? 'ion-android-checkbox-outline text-success' : 'ion-android-checkbox-outline-blank text-danger'"></i>
+          <h2>{{status.locked ? 'Locked' : 'Unlocked'}}</h2>
+          <p>{{status.time}}</p>
+        </ion-item>
+      </ion-list>
+    </div>
   </ion-content>
 </ion-view>

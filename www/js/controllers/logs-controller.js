@@ -5,22 +5,37 @@
     .module('starter')
     .controller('LogsController', LogsController);
 
-  function LogsController($log, restService) {
+  function LogsController($scope, $log, statusesService, notifier) {
     var vm = this;
+    vm.refresh = refresh;
 
-    vm.statuses = [{time: '2016-03-05 15:17:10', message: 'Locked'}, {
-      time: '2016-03-05 15:22:15',
-      message: 'Unlocked'
-    }, {
-      time: '2016-03-05 15:25:15',
-      message: 'Unlocked'
-    }, {
-      time: '2016-03-05 15:32:15',
-      message: 'Locked'
-    }, {
-      time: '2016-03-05 15:42:15',
-      message: 'Unlocked'
-    }];
+    getData();
+
+    function getData() {
+      statusesService.getList().then(responseHandler);
+    }
+
+    function responseHandler(response) {
+      if (response != null) {
+        vm.statuses = response;
+      }else{
+        vm.warning = true;
+        notifier.warning();
+      }
+      $scope.$broadcast('scroll.refreshComplete')
+    }
+
+    function refresh(){
+      statusesService.getList().then(responseHandler);
+    }
+
+    var beforeEnter = $scope.$on('$ionicView.beforeEnter', function(){
+      getData();
+    });
+
+    $scope.$on('$destroy', function() {
+      beforeEnter();
+    });
 
   }
 

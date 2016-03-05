@@ -9,7 +9,7 @@
     var rest = {}; // SERVICE VARIABLE
     rest.data = {}; // STORING ALL SUCCESSFUL DATA
     rest.status = {}; // STORING ERROR STATUSES
-    var restUrl = 'http://158.129.12.95/~JustinasG/';
+    var restUrl = 'http://158.129.12.95/~JustinasG';
 
     rest.callApi = function (url, naming, data, method) {
       var deferred = $q.defer();
@@ -27,17 +27,13 @@
         case 'DELETE':
           rest.delete(url).then(successRequestDataManagement);
           break;
-        case 'JSONP':
-          rest.jsonp(url).then(successRequestDataManagement);
-          break;
       }
       function successRequestDataManagement(response) {
         if (response.data !== null) {
           rest.data[naming] = response.data;
           deferred.resolve('Got data from ' + naming);
         } else {
-          $log.debug('No data', response.data.status.message);
-          rest.status[naming] = response.data.status;
+          rest.status[naming] = response.data;
           deferred.resolve('No data from ' + naming);
         }
       }
@@ -62,12 +58,6 @@
     };
     rest.get = function (url) {
       return $http.get(restUrl + url)
-        .success(restSuccessHandler)
-        .error(restErrorHandler);
-    };
-
-    rest.jsonp = function (url) {
-      return $http.jsonp(restUrl + url)
         .success(restSuccessHandler)
         .error(restErrorHandler);
     };

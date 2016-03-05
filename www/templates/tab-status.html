@@ -1,14 +1,21 @@
 <ion-view view-title="Status">
   <ion-content class="padding">
+    <ion-refresher pulling-text="Pull to refresh" on-refresh="vm.refresh()"></ion-refresher>
     <div class="status-wrapper">
-      <div class="lock-status" ng-if="true">
-        <i class="ion-android-lock status-icon locked"></i>
-        <h1 class="text-center">Locked</h1>
+
+      <div ng-if="vm.warning" ng-include="'templates/no-data.html'"></div>
+
+      <div ng-if="!vm.warning && vm.initialized">
+        <div class="lock-status" ng-show="vm.lockStatus">
+          <i class="ion-android-lock status-icon locked"></i>
+          <h1 class="text-center">Locked</h1>
+        </div>
+        <div class="lock-status" ng-hide="vm.lockStatus">
+          <i class="ion-android-unlock status-icon unlocked"></i>
+          <h1 class="text-center">Unlocked</h1>
+        </div>
       </div>
-      <div class="lock-status" ng-if="false">
-        <i class="ion-android-unlock status-icon unlocked"></i>
-        <h1 class="text-center">Unlocked</h1>
-      </div>
+
     </div>
   </ion-content>
 </ion-view>
