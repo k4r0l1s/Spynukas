@@ -9,7 +9,7 @@
     var vm = this;
     vm.refresh = refresh;
 
-    getData();
+
 
     function getData() {
       statusesService.getList().then(responseHandler);

@@ -10,7 +10,7 @@
     vm.initialized = false;
     vm.refresh = refresh;
 
-    getData();
+
 
     function getData() {
       statusesService.getList().then(responseHandler);

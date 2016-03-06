@@ -39,30 +39,10 @@ $mobile-landscape: "only screen and (orientation: landscape)";
   top: 53px;
 }
 
-//  Alert css
-.popup-head {
+
+.status-top{
+  top: 0;
   padding: 0;
-}
-
-.popup-body {
-  text-align: center;
-}
-
-.popup-buttons .button-default {
-  color: #1297d7;
-  border: 1px solid black;
-}
-
-.popup-buttons .button-positive {
-  background: transparent;
-  color: #1297d7;
-  border: 1px solid black;
-}
-
-.popup-buttons .button-positive:hover {
-  background: transparent;
-  color: #1297d7;
-  border: 1px solid black;
 }
 
 // Custom styles
