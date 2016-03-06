@@ -39,10 +39,19 @@ $mobile-landscape: "only screen and (orientation: landscape)";
   top: 53px;
 }
 
-
 .status-top{
   top: 0;
   padding: 0;
+}
+
+.spinner svg {
+  stroke: $light;
+  fill: $light;
+}
+
+.icon-pulling,
+.text-pulling {
+  color: $light;
 }
 
 // Custom styles
@@ -55,7 +64,7 @@ $mobile-landscape: "only screen and (orientation: landscape)";
 
 .lock-status {
   width: 300px;
-  text-align: center;
+  margin: 0 auto;
 
   @media #{$mobile-landscape} {
     width: 150px;
@@ -91,10 +100,114 @@ $mobile-landscape: "only screen and (orientation: landscape)";
   color: $light-grey;
 }
 
-.text-success {
-  color: $balanced;
+// Tumblr theme
+
+//This theme overrides the $positive and $calm variable
+$positive: #36465d !default;
+$calm: #519ec8 !default;
+$dark-positive: #445569;
+$extra-dark: #2e3f53;
+$light: #ffffff;
+
+//Global Body class
+.body-tumblr {
+  //General Resets
+  font-family: -apple-system, "Helvetica Neue" , "Segoe WP", sans-serif !important;
+  color: $light;
+  text-align: center;
+  h1, h2, h3, h4, h5, h6, .h1, .h2, .h3, .h4, .h5, .h6 {
+    color: $light;
+  }
+  .pane, .view {
+    background-color: $dark-positive;
+  }
+  //Bar
+  .bar.bar-positive {
+    background-image: none;
+    border: none;
+  }
+  //Tabs
+  .tabs-positive > .tabs,
+  .tabs.tabs-positive {
+    background-color: $extra-dark;
+  }
+  .tabs-striped .tabs {
+    border-color: $dark-positive;
+  }
+  .tab-item.tab-item-active,
+  .tab-item.active,
+  .tab-item.activated {
+    color: $light;
+  }
+  .tab-item {
+    color: #9ea1a8;
+  }
+  //THIS CLASS IS OPTIONAL.
+  //If you have four tabs, there's no middle
+  //But if you have an odd number of tabs
+  //You can use this.
+  ///<ion tab class="middle">
+  .tab-item.middle {
+    background-color: $calm;
+    border-radius: 7px;
+    color: $extra-dark;
+    opacity: 1;
+  }
+  .tabs-striped .tabs .tab-item.middle {
+    border-radius: 0;
+  }
+  //Modal
+  .modal {
+    background-color: rgba($positive, 0.95);
+  }
+  .modal-backdrop-bg {
+    background-color: $positive;
+    opacity: 0;
+  }
+  @media (min-width: 680px) {
+    .modal {
+      background-color: rgba(0, 0, 0, 0);
+    }
+    .active .modal-backdrop-bg {
+      background-color: $positive;
+      opacity: 0.98;
+    }
+  }
+  // Popup
+  .popup,
+  .popup-title {
+    color: $dark-positive;
+  }
+  .popup {
+    background-color: $light;
+  }
+  //Lists and Items
+  .item,
+  .item-complex .item-content {
+    background-color: $dark-positive;
+    color: $light;
+    text-align: left;
+    border-color: rgba(255, 255, 255, 0.3);
+    * {
+      color: $light;
+    }
+  }
+  .item.active,
+  .item.activated,
+  .item-complex.active .item-content,
+  .item-complex.activated .item-content,
+  .item .item-content.active,
+  .item .item-content.activated {
+    border-color: $dark-positive;
+    background-color: $dark-positive;
+  }
+  .card .item,
+  .item.item-input {
+    background-color: $light;
+    color: #444;
+  }
+  .card {
+    margin: 0 0 20px 0;
+  }
 }
 
-.text-danger {
-  color: $assertive;
-}
