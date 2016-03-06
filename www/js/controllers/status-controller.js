@@ -22,7 +22,7 @@
         vm.lastLocked = response[0].time;
       } else {
         vm.warning = true;
-        notifier.warning();
+        notifier.warning({template: 'No data to show.'});
       }
       vm.initialized = true;
       $scope.$broadcast('scroll.refreshComplete');

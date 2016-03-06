@@ -20,7 +20,7 @@
         vm.statuses = response;
       }else{
         vm.warning = true;
-        notifier.warning();
+        notifier.warning({template: 'No data to show.'});
       }
       $scope.$broadcast('scroll.refreshComplete')
     }

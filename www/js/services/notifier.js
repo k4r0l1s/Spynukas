@@ -11,10 +11,10 @@
       warning: warning
     };
 
-    function warning(){
+    function warning(options){
       $ionicPopup.alert({
         title: 'Information',
-        template: 'No data to show.',
+        template: options.template,
         buttons: [{text: 'Ok',
           type: 'button-positive'}]
       });
