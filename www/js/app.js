@@ -7,7 +7,7 @@
 // 'starter.controllers' is found in controllers.js
 angular.module('starter', ['ionic'])
 
-  .run(function ($ionicPlatform) {
+  .run(function ($ionicPlatform, $ionicPopup) {
     $ionicPlatform.ready(function () {
       // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
       // for form inputs)
@@ -20,6 +20,21 @@ angular.module('starter', ['ionic'])
         // org.apache.cordova.statusbar required
         StatusBar.styleDefault();
       }
+
+      if (window.Connection) {
+        if (navigator.connection.type == Connection.NONE) {
+          $ionicPopup.confirm({
+              title: "Internet Disconnected",
+              content: "The internet is disconnected on your device."
+            })
+            .then(function (result) {
+              if (!result) {
+                ionic.Platform.exitApp();
+              }
+            });
+        }
+      }
+
     });
   })
 
