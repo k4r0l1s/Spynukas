@@ -1,6 +1,6 @@
 <ion-view view-title="Status">
   <ion-content class="status-top" >
-    <ion-refresher pulling-text="Pull to refresh" on-refresh="vm.refresh()"></ion-refresher>
+    <ion-refresher class="pull-to-refresh-status" pulling-text="Pull to refresh" on-refresh="vm.refresh()"></ion-refresher>
     <div class="status-wrapper">
 
       <div ng-if="vm.warning" ng-include="'templates/no-data.html'"></div>

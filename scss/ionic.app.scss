@@ -85,6 +85,7 @@ $mobile-landscape: "only screen and (orientation: landscape)";
     font-size: 100px;
     padding: 25px;
     border-radius: 150px;
+    margin-top: 40px;
   }
 }
 
@@ -98,6 +99,10 @@ $mobile-landscape: "only screen and (orientation: landscape)";
 
 .no-data {
   color: $light-grey;
+}
+
+.pull-to-refresh-status{
+  top:10px;
 }
 
 // Tumblr theme
